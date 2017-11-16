@@ -24,7 +24,7 @@ Look in examples package for samples.
 
 ## Notes
 
-This project is using Java 8. It can easily converted to older languages, but staying on an updated version of Java is still better.
+This project is using Java 8. It can be easily converted to older languages, but staying on an updated version of Java is still better.
 
 If i receive too many requests, i can change it to use Java 7 or lower.
 
