@@ -4,7 +4,7 @@ This is the Java implementation of the Discord RPC C++ SDK that can be found in 
 
 ## Usage
 
-_**Not yet released**_
+_**Not yet released on Maven Central, will do when all important issues are resolved (will be version 1.0.0)**_
 
 Include this library with Maven with the following:
 ```xml
