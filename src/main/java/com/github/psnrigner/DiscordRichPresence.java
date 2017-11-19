@@ -26,28 +26,6 @@ public class DiscordRichPresence
     private boolean instance;
 
     /**
-     * Create a discord rich presence
-     */
-    public DiscordRichPresence()
-    {
-        this.state = null;
-        this.details = null;
-        this.startTimestamp = 0;
-        this.endTimestamp = 0;
-        this.largeImageKey = null;
-        this.largeImageText = null;
-        this.smallImageKey = null;
-        this.smallImageText = null;
-        this.partyId = null;
-        this.partySize = 0;
-        this.partyMax = 0;
-        this.matchSecret = null;
-        this.joinSecret = null;
-        this.spectateSecret = null;
-        this.instance = false;
-    }
-
-    /**
      * Set state
      *
      * @param state New state
