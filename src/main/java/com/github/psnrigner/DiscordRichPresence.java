@@ -25,6 +25,29 @@ public class DiscordRichPresence
     private String spectateSecret;
     private boolean instance;
 
+    public DiscordRichPresence() {}
+
+    private DiscordRichPresence(String state, String details, long startTimestamp, long endTimestamp,
+                                String largeImageKey, String largeImageText, String smallImageKey,
+                                String smallImageText, String partyId, int partySize, int partyMax, String matchSecret,
+                                String joinSecret, String spectateSecret, boolean instance) {
+        this.state = state;
+        this.details = details;
+        this.startTimestamp = startTimestamp;
+        this.endTimestamp = endTimestamp;
+        this.largeImageKey = largeImageKey;
+        this.largeImageText = largeImageText;
+        this.smallImageKey = smallImageKey;
+        this.smallImageText = smallImageText;
+        this.partyId = partyId;
+        this.partySize = partySize;
+        this.partyMax = partyMax;
+        this.matchSecret = matchSecret;
+        this.joinSecret = joinSecret;
+        this.spectateSecret = spectateSecret;
+        this.instance = instance;
+    }
+
     /**
      * Set state
      *
@@ -420,5 +443,108 @@ public class DiscordRichPresence
         jsonObject.add("args", args);
         
         return jsonObject;
+    }
+
+    public static DiscordRichPresenceBuilder builder() {
+        return new DiscordRichPresenceBuilder();
+    }
+
+    public static class DiscordRichPresenceBuilder {
+        private String state;
+        private String details;
+        private long startTimestamp;
+        private long endTimestamp;
+        private String largeImageKey;
+        private String largeImageText;
+        private String smallImageKey;
+        private String smallImageText;
+        private String partyId;
+        private int partySize;
+        private int partyMax;
+        private String matchSecret;
+        private String joinSecret;
+        private String spectateSecret;
+        private boolean instance;
+
+        public DiscordRichPresence build() {
+            return new DiscordRichPresence(state, details, startTimestamp, endTimestamp, largeImageKey, largeImageText,
+                    smallImageKey, smallImageText, partyId, partySize, partyMax,
+                    matchSecret, joinSecret, spectateSecret, instance);
+        }
+
+        public DiscordRichPresenceBuilder setState(String state) {
+            this.state = state;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setDetails(String details) {
+            this.details = details;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setStartTimestamp(long startTimestamp) {
+            this.startTimestamp = startTimestamp;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setEndTimestamp(long endTimestamp) {
+            this.endTimestamp = endTimestamp;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setLargeImageKey(String largeImageKey) {
+            this.largeImageKey = largeImageKey;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setLargeImageText(String largeImageText) {
+            this.largeImageText = largeImageText;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setSmallImageKey(String smallImageKey) {
+            this.smallImageKey = smallImageKey;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setSmallImageText(String smallImageText) {
+            this.smallImageText = smallImageText;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setPartyId(String partyId) {
+            this.partyId = partyId;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setPartySize(int partySize) {
+            this.partySize = partySize;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setPartyMax(int partyMax) {
+            this.partyMax = partyMax;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setMatchSecret(String matchSecret) {
+            this.matchSecret = matchSecret;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setJoinSecret(String joinSecret) {
+            this.joinSecret = joinSecret;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setSpectateSecret(String spectateSecret) {
+            this.spectateSecret = spectateSecret;
+            return this;
+        }
+
+        public DiscordRichPresenceBuilder setInstance(boolean instance) {
+            this.instance = instance;
+            return this;
+        }
     }
 }
