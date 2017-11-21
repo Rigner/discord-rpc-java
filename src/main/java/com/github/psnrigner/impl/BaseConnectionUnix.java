@@ -93,7 +93,7 @@ class BaseConnectionUnix extends BaseConnection
     }
 
     @Override
-    synchronized boolean write(byte[] bytes, int length)
+    boolean write(byte[] bytes, int length)
     {
         if (bytes == null || length == 0)
             return bytes != null;

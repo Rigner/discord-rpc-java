@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Arrays;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 /**
  * Rpc connection implementation
@@ -31,6 +33,8 @@ public class RpcConnection
     private ErrorCode lastErrorCode;
     private String lastErrorMessage;
 
+    private final Lock writeLock;
+
     private RpcConnection(String applicationId)
     {
         this.baseConnection = BaseConnection.create();
@@ -42,6 +46,8 @@ public class RpcConnection
         this.appId = applicationId;
         this.lastErrorCode = ErrorCode.SUCCESS;
         this.lastErrorMessage = null;
+
+        this.writeLock = new ReentrantLock();
     }
 
     /**
@@ -149,9 +155,22 @@ public class RpcConnection
             messageFrame.opCode = OpCode.HANDSHAKE;
             messageFrame.message = this.writeHandShakeObj();
 
-            if (messageFrame.write()
-                    && this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
-                    && this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length))
+            boolean success;
+
+            this.writeLock.lock();
+
+            try
+            {
+                success = messageFrame.write()
+                        && this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
+                        && this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length);
+            }
+            finally
+            {
+                this.writeLock.unlock();
+            }
+
+            if (success)
                 this.state = State.SENT_HANDSHAKE;
             else
                 this.close();
@@ -180,9 +199,21 @@ public class RpcConnection
         messageFrame.opCode = OpCode.FRAME;
         messageFrame.message = new String(bytes);
 
-        if (!messageFrame.write()
-                || !this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
-                || !this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length))
+        boolean success;
+        this.writeLock.lock();
+
+        try
+        {
+            success = !messageFrame.write()
+                    || !this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
+                    || !this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length);
+        }
+        finally
+        {
+            this.writeLock.unlock();
+        }
+
+        if (!success)
         {
             this.close();
             return false;
@@ -256,9 +287,23 @@ public class RpcConnection
                 case PING:
                     messageFrame.opCode = OpCode.PONG;
 
-                    if (!this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
-                            || !this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length))
+                    boolean success;
+
+                    this.writeLock.lock();
+
+                    try
+                    {
+                        success = !this.baseConnection.write(messageFrame.headerBuffer, messageFrame.headerBuffer.length)
+                                || !this.baseConnection.write(messageFrame.messageBuffer, messageFrame.length);
+                    }
+                    finally
+                    {
+                        this.writeLock.unlock();
+                    }
+
+                    if (success)
                         this.close();
+
                     break;
 
                 case PONG:
@@ -299,7 +344,7 @@ public class RpcConnection
     {
         DISCONNECTED,
         SENT_HANDSHAKE,
-        AWAITING_RESPONSE, // FIXME Not used ? https://github.com/discordapp/discord-rpc/search?utf8=%E2%9C%93&q=AwaitingResponse&type=
+        // AWAITING_RESPONSE, FIXME Not used ? https://github.com/discordapp/discord-rpc/search?utf8=%E2%9C%93&q=AwaitingResponse&type=
         CONNECTED
     }
 
