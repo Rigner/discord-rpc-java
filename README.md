@@ -4,20 +4,18 @@ This is the Java implementation of the Discord RPC C++ SDK that can be found in 
 
 ## Usage
 
-_**Not yet released on Maven Central, will do when all important issues are resolved (will be version 1.0.0)**_
-
 Include this library with Maven with the following:
 ```xml
 <dependency>
-    <groupId>net.rigner</groupId>
+    <groupId>com.github.psnrigner</groupId>
     <artifactId>discord-rpc-java</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.1</version>
 </dependency>
 ```
 
 Or for Gradle:
 ```
-compile "net.rigner:discord-rpc-java:0.0.1"
+compile "com.github.psnrigner:discord-rpc-java:1.0.1"
 ```
 
 Look in examples package for samples.
