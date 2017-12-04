@@ -495,6 +495,7 @@ public class DiscordRichPresence
          * Set state
          *
          * @param state New state
+         * @return This
          */
         public DiscordRichPresenceBuilder setState(String state)
         {
@@ -506,6 +507,7 @@ public class DiscordRichPresence
          * Set details
          *
          * @param details New details
+         * @return This
          */
         public DiscordRichPresenceBuilder setDetails(String details)
         {
@@ -517,6 +519,7 @@ public class DiscordRichPresence
          * Set start timestamp (in millis)
          *
          * @param startTimestamp New start timestamp
+         * @return This
          */
         public DiscordRichPresenceBuilder setStartTimestamp(long startTimestamp)
         {
@@ -528,6 +531,7 @@ public class DiscordRichPresence
          * Set end timestamp (in millis)
          *
          * @param endTimestamp New end timestamp
+         * @return This
          */
         public DiscordRichPresenceBuilder setEndTimestamp(long endTimestamp)
         {
@@ -539,6 +543,7 @@ public class DiscordRichPresence
          * Set large image key
          *
          * @param largeImageKey New large image key
+         * @return This
          */
         public DiscordRichPresenceBuilder setLargeImageKey(String largeImageKey)
         {
@@ -550,6 +555,7 @@ public class DiscordRichPresence
          * Set large image text
          *
          * @param largeImageText New large image text
+         * @return This
          */
         public DiscordRichPresenceBuilder setLargeImageText(String largeImageText)
         {
@@ -561,6 +567,7 @@ public class DiscordRichPresence
          * Set small image key
          *
          * @param smallImageKey New small image key
+         * @return This
          */
         public DiscordRichPresenceBuilder setSmallImageKey(String smallImageKey)
         {
@@ -572,6 +579,7 @@ public class DiscordRichPresence
          * Set small image text
          *
          * @param smallImageText New small image text
+         * @return This
          */
         public DiscordRichPresenceBuilder setSmallImageText(String smallImageText)
         {
@@ -583,6 +591,7 @@ public class DiscordRichPresence
          * Set party id
          *
          * @param partyId New party id
+         * @return This
          */
         public DiscordRichPresenceBuilder setPartyId(String partyId)
         {
@@ -594,6 +603,7 @@ public class DiscordRichPresence
          * Set party size
          *
          * @param partySize New party size
+         * @return This
          */
         public DiscordRichPresenceBuilder setPartySize(int partySize)
         {
@@ -605,6 +615,7 @@ public class DiscordRichPresence
          * Set party max size
          *
          * @param partyMax New party max size
+         * @return This
          */
         public DiscordRichPresenceBuilder setPartyMax(int partyMax)
         {
@@ -616,6 +627,7 @@ public class DiscordRichPresence
          * Set match secret
          *
          * @param matchSecret New match secret
+         * @return This
          */
         public DiscordRichPresenceBuilder setMatchSecret(String matchSecret)
         {
@@ -627,6 +639,7 @@ public class DiscordRichPresence
          * Set join secret
          *
          * @param joinSecret New join secret
+         * @return This
          */
         public DiscordRichPresenceBuilder setJoinSecret(String joinSecret)
         {
@@ -638,6 +651,7 @@ public class DiscordRichPresence
          * Set spectate secret
          *
          * @param spectateSecret New spectate secret
+         * @return This
          */
         public DiscordRichPresenceBuilder setSpectateSecret(String spectateSecret)
         {
@@ -649,6 +663,7 @@ public class DiscordRichPresence
          * Set if the game is an instance
          *
          * @param instance {@code true} if an instance
+         * @return This
          */
         public DiscordRichPresenceBuilder setInstance(boolean instance)
         {

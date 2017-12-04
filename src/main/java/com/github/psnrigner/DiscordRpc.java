@@ -427,11 +427,12 @@ public class DiscordRpc
                             JsonObject user = data.get("user").getAsJsonObject();
                             String userId = user.has("id") ? user.get("id").getAsString() : null;
                             String username = user.has("username") ? user.get("username").getAsString() : null;
+                            String discriminator = user.has("") ? user.get("discriminator").getAsString() : null;
                             String avatar = user.has("avatar") ? user.get("avatar").getAsString() : null;
 
                             if (userId != null && username != null)
                             {
-                                DiscordJoinRequest discordJoinRequest = new DiscordJoinRequest(userId, username, avatar == null ? "" : avatar);
+                                DiscordJoinRequest discordJoinRequest = new DiscordJoinRequest(userId, username, discriminator, avatar == null ? "" : avatar);
 
                                 this.joinAskQueue.offer(discordJoinRequest);
                             }

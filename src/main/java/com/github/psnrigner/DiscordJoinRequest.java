@@ -7,12 +7,14 @@ public class DiscordJoinRequest
 {
     private final String userId;
     private final String username;
+    private final String discriminator;
     private final String avatar;
 
-    DiscordJoinRequest(String userId, String username, String avatar)
+    DiscordJoinRequest(String userId, String username, String discriminator, String avatar)
     {
         this.userId = userId;
         this.username = username;
+        this.discriminator = discriminator;
         this.avatar = avatar;
     }
 
@@ -34,6 +36,16 @@ public class DiscordJoinRequest
     public String getUsername()
     {
         return this.username;
+    }
+
+    /**
+     * Get the discriminator of the request
+     *
+     * @return Discriminator
+     */
+    public String getDiscriminator()
+    {
+        return this.discriminator;
     }
 
     /**
