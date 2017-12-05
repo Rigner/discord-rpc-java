@@ -68,7 +68,7 @@ public class DiscordRichPresence
      */
     public String getState()
     {
-        return this.state;
+        return this.state == null ? "" : this.state;
     }
 
     /**
@@ -88,7 +88,7 @@ public class DiscordRichPresence
      */
     public String getDetails()
     {
-        return this.details;
+        return this.details == null ? "" : this.details;
     }
 
     /**
