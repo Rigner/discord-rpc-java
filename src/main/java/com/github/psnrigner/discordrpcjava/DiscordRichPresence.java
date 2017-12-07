@@ -1,4 +1,4 @@
-package com.github.psnrigner;
+package com.github.psnrigner.discordrpcjava;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;

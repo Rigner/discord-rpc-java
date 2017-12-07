@@ -9,13 +9,13 @@ Include this library with Maven with the following:
 <dependency>
     <groupId>com.github.psnrigner</groupId>
     <artifactId>discord-rpc-java</artifactId>
-    <version>1.0.3</version>
+    <version>1.0.4</version>
 </dependency>
 ```
 
 Or for Gradle:
 ```
-compile "com.github.psnrigner:discord-rpc-java:1.0.3"
+compile "com.github.psnrigner:discord-rpc-java:1.0.4"
 ```
 
 Look in examples package for samples.

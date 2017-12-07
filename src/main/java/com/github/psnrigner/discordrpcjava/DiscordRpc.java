@@ -1,9 +1,9 @@
-package com.github.psnrigner;
+package com.github.psnrigner.discordrpcjava;
 
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import com.github.psnrigner.impl.Backoff;
-import com.github.psnrigner.impl.RpcConnection;
+import com.github.psnrigner.discordrpcjava.impl.Backoff;
+import com.github.psnrigner.discordrpcjava.impl.RpcConnection;
 
 import java.lang.management.ManagementFactory;
 import java.util.Queue;

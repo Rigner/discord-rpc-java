@@ -1,4 +1,4 @@
-package com.github.psnrigner.impl;
+package com.github.psnrigner.discordrpcjava.impl;
 
 import java.security.SecureRandom;
 import java.util.Random;
