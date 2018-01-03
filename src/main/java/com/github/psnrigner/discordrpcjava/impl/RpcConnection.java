@@ -1,6 +1,6 @@
-package com.github.psnrigner.impl;
+package com.github.psnrigner.discordrpcjava.impl;
 
-import com.github.psnrigner.ErrorCode;
+import com.github.psnrigner.discordrpcjava.ErrorCode;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;

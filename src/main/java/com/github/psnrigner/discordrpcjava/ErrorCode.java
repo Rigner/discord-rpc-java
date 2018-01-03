@@ -1,4 +1,4 @@
-package com.github.psnrigner;
+package com.github.psnrigner.discordrpcjava;
 
 /**
  * Discord error codes

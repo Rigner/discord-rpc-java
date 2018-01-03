@@ -1,15 +1,14 @@
-package com.github.psnrigner.examples;
+package com.github.psnrigner.discordrpcjava.examples;
 
-import com.github.psnrigner.DiscordEventHandler;
-import com.github.psnrigner.DiscordRichPresence;
-import com.github.psnrigner.DiscordRpc;
-import com.github.psnrigner.DiscordJoinRequest;
-import com.github.psnrigner.ErrorCode;
+import com.github.psnrigner.discordrpcjava.DiscordEventHandler;
+import com.github.psnrigner.discordrpcjava.DiscordJoinRequest;
+import com.github.psnrigner.discordrpcjava.DiscordRichPresence;
+import com.github.psnrigner.discordrpcjava.DiscordRpc;
+import com.github.psnrigner.discordrpcjava.ErrorCode;
 
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import javax.swing.*;
 
-public class SimpleGame
+public class InClass
 {
     public static void main(String[] args)
     {
@@ -24,7 +23,7 @@ public class SimpleGame
             frame.pack();
 
             frame.setVisible(true);
-            SimpleGame.run(args[0]);
+            InClass.run(args[0]);
 
             frame.dispose();
 
@@ -41,37 +40,37 @@ public class SimpleGame
             @Override
             public void ready()
             {
-                System.err.println("READY");
+                System.err.println("CLASS READY");
             }
 
             @Override
             public void disconnected(ErrorCode errorCode, String message)
             {
-                System.err.println("DISCONNECTED : " + errorCode + " " + message);
+                System.err.println("CLASS DISCONNECTED : " + errorCode + " " + message);
             }
 
             @Override
             public void errored(ErrorCode errorCode, String message)
             {
-                System.err.println("ERRORED : " + errorCode + " " + message);
+                System.err.println("CLASS ERRORED : " + errorCode + " " + message);
             }
 
             @Override
             public void joinGame(String joinSecret)
             {
-                System.err.println("JOIN GAME : " + joinSecret);
+                System.err.println("CLASS JOIN GAME : " + joinSecret);
             }
 
             @Override
             public void spectateGame(String spectateSecret)
             {
-                System.err.println("SPECTATE GAME : " + spectateSecret);
+                System.err.println("CLASS SPECTATE GAME : " + spectateSecret);
             }
 
             @Override
             public void joinRequest(DiscordJoinRequest joinRequest)
             {
-                System.err.println("JOIN REQUEST : " + joinRequest);
+                System.err.println("CLASS JOIN REQUEST : " + joinRequest);
             }
         };
 
@@ -83,20 +82,20 @@ public class SimpleGame
             discordRpc.runCallbacks();
 
             long start = System.currentTimeMillis() / 1000L;
-            long end = System.currentTimeMillis() / 1000L + 300L;
+            long end = System.currentTimeMillis() / 1000L + 14400L;
 
-            for (int i = 0; i < 60; ++i)
+            for (int i = 0; i < 10000; ++i)
             {
                 DiscordRichPresence discordRichPresence = new DiscordRichPresence();
-                discordRichPresence.setState("Developing");
-                discordRichPresence.setDetails("Java | Discord RPC API");
+                discordRichPresence.setState("In Class");
+                discordRichPresence.setDetails("Database Management");
                 discordRichPresence.setStartTimestamp(start);
                 discordRichPresence.setEndTimestamp(end);
                 discordRichPresence.setLargeImageKey("icon-large");
                 discordRichPresence.setSmallImageKey("icon-small");
                 discordRichPresence.setPartyId("ALONE");
-                discordRichPresence.setPartySize(1);
-                discordRichPresence.setPartyMax(2);
+                discordRichPresence.setPartySize(40);
+                discordRichPresence.setPartyMax(70);
                 discordRichPresence.setMatchSecret("hello");
                 discordRichPresence.setJoinSecret("join");
                 discordRichPresence.setSpectateSecret("look");
