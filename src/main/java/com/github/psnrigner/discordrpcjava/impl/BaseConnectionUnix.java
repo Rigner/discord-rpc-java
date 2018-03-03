@@ -184,17 +184,17 @@ class BaseConnectionUnix extends BaseConnection
         String desktopFileName = "/discord-" + applicationId + ".desktop";
         String desktopFilePath = home + "/.local";
 
-        if (this.mkdir(desktopFilePath))
+        if (!this.mkdir(desktopFilePath))
             throw new RuntimeException("Failed to create directory '" + desktopFilePath + "'");
 
         desktopFilePath += "/share";
 
-        if (this.mkdir(desktopFilePath))
+        if (!this.mkdir(desktopFilePath))
             throw new RuntimeException("Failed to create directory '" + desktopFilePath + "'");
 
         desktopFilePath += "/applications";
 
-        if (this.mkdir(desktopFilePath))
+        if (!this.mkdir(desktopFilePath))
             throw new RuntimeException("Failed to create directory '" + desktopFilePath + "'");
 
         desktopFilePath += desktopFileName;
