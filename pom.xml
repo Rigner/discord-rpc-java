@@ -6,7 +6,7 @@
 
     <groupId>com.github.psnrigner</groupId>
     <artifactId>discord-rpc-java</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
 
     <!-- Information for release -->
@@ -55,12 +55,6 @@
     </repositories>
 
     <dependencies>
-        <!-- Use apache lib to efficiently detect OS version, should prolly move to custom system -->
-        <dependency>
-            <groupId>commons-lang</groupId>
-            <artifactId>commons-lang</artifactId>
-            <version>2.6</version>
-        </dependency>
 
         <!-- Parse and write json objects -->
         <dependency>
