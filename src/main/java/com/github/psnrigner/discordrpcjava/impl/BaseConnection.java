@@ -16,15 +16,16 @@ public abstract class BaseConnection
 
     static BaseConnection create()
     {
-        if (SystemUtils.isMacOSX())
-            return new BaseConnectionOsx();
-
-        if (SystemUtils.isUnix())
-            return new BaseConnectionUnix();
-
-        if (SystemUtils.isWindows())
-            return new BaseConnectionWindows();
-
+        switch (SystemUtils.getOs()) {
+            case WINDOWS:
+                return new BaseConnectionWindows();
+            case MAC_OSX:
+                return new BaseConnectionOsx();
+            case UNIX:
+                return new BaseConnectionUnix();
+            case UNKNOWN:
+                break; // throw error below
+        }
         throw new IllegalStateException("OS is not supported: " + SystemUtils.getOsName());
     }
 

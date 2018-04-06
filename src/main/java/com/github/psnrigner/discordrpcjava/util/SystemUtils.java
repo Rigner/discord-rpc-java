@@ -2,29 +2,12 @@ package com.github.psnrigner.discordrpcjava.util;
 
 public class SystemUtils
 {
-
-    public static boolean isWindows()
-    {
-        return is(OS.WINDOWS);
-    }
-
-    public static boolean isMacOSX()
-    {
-        return is(OS.MAC_OSX);
-    }
-
-    public static boolean isUnix()
-    {
-        return is(OS.UNIX);
+    public static OS getOs() {
+        return OS.byOsName(getOsName());
     }
 
     public static String getOsName() {
         return System.getProperty("os.name");
-    }
-
-    private static boolean is(OS os)
-    {
-        return OS.byOsName(System.getProperty("os.name")).equals(os);
     }
 
     public enum OS {
