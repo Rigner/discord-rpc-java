@@ -1,6 +1,7 @@
 package com.github.psnrigner.discordrpcjava.impl;
 
-import org.apache.commons.lang.SystemUtils;
+
+import com.github.psnrigner.discordrpcjava.util.SystemUtils;
 
 /**
  * Base connection class
@@ -15,16 +16,17 @@ public abstract class BaseConnection
 
     static BaseConnection create()
     {
-        if (SystemUtils.IS_OS_MAC_OSX)
-            return new BaseConnectionOsx();
-
-        if (SystemUtils.IS_OS_UNIX)
-            return new BaseConnectionUnix();
-
-        if (SystemUtils.IS_OS_WINDOWS)
-            return new BaseConnectionWindows();
-
-        throw new IllegalStateException("This OS is not supported");
+        switch (SystemUtils.getOs()) {
+            case WINDOWS:
+                return new BaseConnectionWindows();
+            case MAC_OSX:
+                return new BaseConnectionOsx();
+            case UNIX:
+                return new BaseConnectionUnix();
+            case UNKNOWN:
+                break; // throw error below
+        }
+        throw new IllegalStateException("OS is not supported: " + SystemUtils.getOsName());
     }
 
     static void destroy(BaseConnection baseConnection)
