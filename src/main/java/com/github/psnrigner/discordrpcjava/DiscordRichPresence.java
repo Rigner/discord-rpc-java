@@ -361,8 +361,12 @@ public class DiscordRichPresence
         args.add("pid", new JsonPrimitive(pid));
 
         JsonObject activity = new JsonObject();
-        activity.add("state", new JsonPrimitive(this.getState()));
-        activity.add("details", new JsonPrimitive(this.getDetails()));
+        
+        if (!this.getState().trim().isEmpty())
+        	activity.add("state", new JsonPrimitive(this.getState()));
+
+        if (!this.getDetails().trim().isEmpty())
+        	activity.add("details", new JsonPrimitive(this.getDetails()));
 
         if (this.getStartTimestamp() != 0 || this.getEndTimestamp() != 0)
         {
